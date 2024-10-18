@@ -1,0 +1,6 @@
+@TPKW.LAB4.Server_HostAddress = http://localhost:5196
+
+GET {{TPKW.LAB4.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
