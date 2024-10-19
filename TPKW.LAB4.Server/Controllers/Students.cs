@@ -10,11 +10,11 @@ namespace TPKW.LAB4.Server.Controllers
     {
         public static List<Student> list = new List<Student>();
         private static int id = 0;
-        // GET: api/<BaseController>
+        // GET: api/<Students>
         [HttpGet]
         public IEnumerable<Student> Get()
         {
-            return list;
+            return list.ToArray();
         }
 
         // GET api/<Students>/5
@@ -26,10 +26,11 @@ namespace TPKW.LAB4.Server.Controllers
 
         // POST api/<Students>
         [HttpPost]
-        public void Post([FromBody] StudentDto student)
+        public IActionResult Post([FromBody] StudentDto student)
         {
-            Student student1 = new Student(firstName: student.FirstName, lastName: student.LastName);
+            Student student1 = new Student(firstName: student.firstName, lastName: student.lastName);
             list.Add(student1);
+            return Ok(student1);
         }
 
         // PUT api/<Students>/5
@@ -37,8 +38,8 @@ namespace TPKW.LAB4.Server.Controllers
         public void Put(int id, [FromBody] StudentDto student)
         {
             var temp = list.FirstOrDefault(x => x.Id == id);
-            temp.FirstName = student.FirstName;
-            temp.LastName = student.LastName;
+            temp.firstName = student.firstName;
+            temp.lastName = student.lastName;
         }
 
         // DELETE api/<Students>/5

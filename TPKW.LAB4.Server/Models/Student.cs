@@ -4,8 +4,8 @@
     {
         private static int id = 0;
         public int Id { get; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
 
         public Student()
         {
@@ -14,8 +14,8 @@
         public Student(string firstName, string lastName)
         {
             Id = ++id;
-            FirstName = firstName;
-            LastName = lastName;
+            this.firstName = firstName;
+            this.lastName = lastName;
         }
     }
 }

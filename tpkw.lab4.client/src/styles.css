@@ -1,1 +1,132 @@
-/* You can add global styles to this file, and also import other style files */
+:host {
+  max-width: 1280px;
+  padding: 2rem;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background: #F2F2F2;
+}
+
+tr:nth-child(odd) {
+  background: #FFF;
+}
+
+th, td {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+table {
+  margin: 0 auto;
+}
+
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.list {
+  margin-top: 20px;
+}
+
+.button-success {
+  margin-top: 15px;
+}
+
+.form-control {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.li-body {
+  margin-right: auto;
+}
+
+.button-edit {
+  margin-left: 15px;
+}
+
+.button-delete {
+  margin-left: 15px;
+}
+
+.body {
+  margin-bottom: 60px;
+}
+
+/* Основной контейнер кнопок */
+.toggle-switch {
+  position: relative;
+  display: flex;
+  width: 200px;
+  height: 50px;
+  background-color: #f0f0f0;
+  border: 2px solid #000; /* Цвет рамки контейнера */
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+/* Подсветка выбранного элемента */
+.selection-indicator {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  width: 90px; /* Ширина подсветки */
+  height: 40px;
+  background-color: rgba(0, 128, 255, 0.2); /* Цвет подсветки (синий с прозрачностью) */
+  border: 2px solid blue; /* Граница подсветки */
+  border-radius: 20px;
+  transition: all 0.3s ease; /* Плавное перемещение подсветки */
+}
+
+/* Стили для кнопок */
+.option {
+  flex: 1;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none;
+  z-index: 1; /* Кнопки над подсветкой */
+  transition: color 0.3s ease; /* Плавный переход цвета текста */
+}
+
+#edit-btn.active {
+  color: blue; /* Цвет текста при активном состоянии */
+}
+
+#create-btn.active {
+  color: blue; /* Цвет текста при активном состоянии */
+}
+
+.rocket {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 50%;
+  transition: transform 0.5s;
+  cursor: pointer;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/123/123369.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+  .rocket.fly {
+    transform: translateX(200px) translateY(-700px) rotate(720deg);
+    transition: transform 4s;
+  }

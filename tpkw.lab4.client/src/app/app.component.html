@@ -1,9 +1,27 @@
-<h1 id="tableLabel">Weather forecast</h1>
+<div class="text-center">
+  <div class="toggle-switch">
+    <div id="select-indicator" class="selection-indicator"></div>
+    <button class="option" id="edit-btn">Edit</button>
+    <button class="option" id="create-btn">Create</button>
+  </div>
 
-<p>This component demonstrates fetching data from the server.</p>
-
-<p *ngIf="!students"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
-
+  <p id="nameTable">
+    Create
+  </p>
+  <form>
+    <input visible="false" style="visibility:hidden" class="test-data" id="id" type="tel"  placeholder="id" value="">
+    <input class="form-control" id="firstname" type="text" [(ngModel)]="inputForm.firstName" name="firstName" placeholder="firstname" aria-label="default input example">
+    <input class="form-control" id="lastname" type="text" [(ngModel)]="inputForm.lastName" placeholder="lastname" name="lastName" aria-label="default input example">
+    <button class="btn btn-success button-succse" type="button" (click)='onSubmit()'>Ok</button>
+  </form>
+  <div class="list">
+    <ul id="students-list" class="list-group">
+    </ul>
+  </div>
+  <div id="rocket-button" class="rocket">
+    <span>Switch Mode</span>
+  </div>
+</div>
 <table *ngIf="students">
     <thead>
         <tr>
