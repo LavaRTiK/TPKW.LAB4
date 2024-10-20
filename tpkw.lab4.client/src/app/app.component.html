@@ -1,40 +1,29 @@
-<div class="text-center">
-  <div class="toggle-switch">
-    <div id="select-indicator" class="selection-indicator"></div>
-    <button class="option" id="edit-btn">Edit</button>
-    <button class="option" id="create-btn">Create</button>
-  </div>
-
-  <p id="nameTable">
-    Create
-  </p>
-  <form>
-    <input visible="false" style="visibility:hidden" class="test-data" id="id" type="tel"  placeholder="id" value="">
-    <input class="form-control" id="firstname" type="text" [(ngModel)]="inputForm.firstName" name="firstName" placeholder="firstname" aria-label="default input example">
-    <input class="form-control" id="lastname" type="text" [(ngModel)]="inputForm.lastName" placeholder="lastname" name="lastName" aria-label="default input example">
-    <button class="btn btn-success button-succse" type="button" (click)='onSubmit()'>Ok</button>
-  </form>
-  <div class="list">
-    <ul id="students-list" class="list-group">
-    </ul>
-  </div>
-  <div id="rocket-button" class="rocket">
-    <span>Switch Mode</span>
-  </div>
+<div>
+  <p class="student-componet-name">Student</p>
+  <button class="btn" (click)="toggleCreateEdit()">
+    {{ isCreate ? 'Create' : 'Edit' }}
+  </button>
 </div>
+<form class="form-input">
+  <input *ngIf="!isCreate" class="test-data" id="id" type="tel" [(ngModel)]="inputForm.id" name="id" placeholder="id" value="" >
+  <input class="form-control" id="firstname" type="text" [(ngModel)]="inputForm.firstName" name="firstName" placeholder="firstname" aria-label="default input example">
+  <input class="form-control" id="lastname" type="text" [(ngModel)]="inputForm.lastName" placeholder="lastname" name="lastName" aria-label="default input example">
+  <button class="btn btn-success button-succse" type="button" (click)='onSubmit()'>Ok</button>
+</form>
 <table *ngIf="students">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>firstname</th>
-            <th>lastname</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let student of students">
-          <td>{{ student.id }}</td>
-          <td>{{ student.firstName }}</td>
-          <td>{{ student.lastName }}</td>
-        </tr>
-    </tbody>
-</table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>firstname</th>
+      <th>lastname</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.id }}</td>
+      <td>{{ student.firstName }}</td>
+      <td>{{ student.lastName }}</td>
+      <td><button class="btn btn-success btn-edit" (click)='onCLickEdit(student.id,student.firstName,student.lastName)'>Edit</button><button class="btn btn-danger btn-delete" (click)='onCLickDelete(student.id)'>Delete</button></td>
+    </tr>
+  </tbody>
+</table> 
