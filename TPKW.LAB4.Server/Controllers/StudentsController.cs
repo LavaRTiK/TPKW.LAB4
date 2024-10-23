@@ -1,20 +1,21 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TPKW.LAB4.Server.Data;
 using TPKW.LAB4.Server.Models;
 
 namespace TPKW.LAB4.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Students : ControllerBase
+    public class StudentsController : ControllerBase
     {
-        public static List<Student> list = new List<Student>();
+        private MyDbContext db = new MyDbContext();
         private static int id = 0;
         // GET: api/<Students>
         [HttpGet]
         public IEnumerable<Student> Get()
         {
-            return list.ToArray();
+            return db.Students.ToArray();
         }
 
         // GET api/<Students>/5
@@ -29,24 +30,31 @@ namespace TPKW.LAB4.Server.Controllers
         public IActionResult Post([FromBody] StudentDto student)
         {
             Student student1 = new Student(firstName: student.firstName, lastName: student.lastName);
-            list.Add(student1);
+            //list.Add(student1);
+            db.Add(student1);
+            db.SaveChanges();
             return Ok(student1);
         }
 
         // PUT api/<Students>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] StudentDto student)
+        public IActionResult Put(int id, [FromBody] StudentDto student)
         {
-            var temp = list.FirstOrDefault(x => x.Id == id);
+            var temp = db.Students.FirstOrDefault(x => x.Id == id);
             temp.firstName = student.firstName;
             temp.lastName = student.lastName;
+            db.SaveChanges();
+            return Ok();
         }
 
         // DELETE api/<Students>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            list.Remove(list.FirstOrDefault(x => x.Id == id));
+            //list.Remove(list.FirstOrDefault(x => x.Id == id));
+            db.Remove(db.Students.FirstOrDefault(x => x.Id == id));
+            db.SaveChanges();
+            return Ok();
         }
     }
 }

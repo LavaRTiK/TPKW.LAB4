@@ -1,4 +1,6 @@
 
+using TPKW.LAB4.Server.Data;
+
 namespace TPKW.LAB4.Server
 {
     public class Program
@@ -15,7 +17,6 @@ namespace TPKW.LAB4.Server
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
@@ -29,7 +30,6 @@ namespace TPKW.LAB4.Server
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
